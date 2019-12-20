@@ -1,12 +1,14 @@
 #=================================================
-# https://github.com/P3TERX/Actions-OpenWrt
+# https://github.com/Live-ID/OpenWrt-Actions
 # Description: Build OpenWrt using GitHub Actions(macOS)
 # Lisence: MIT
-# Author: P3TERX
-# Blog: https://p3terx.com
+# Author: Tony
+# Blog: https://bit.do/TonyLee
 #=================================================
 
-name: Build OpenWrt (macOS)
+#name: Build OpenWrt (macOS) WR703N OpenVPN SSR
+#name: OpenWrt WR703N SS SSR (macOS)
+name: OpenWrt WR703N SS SSR (macOS)
 
 on: 
   public
@@ -19,6 +21,8 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
+#  watch:
+#    types: [started]
 #  watch:
 #    types: [started]
 
@@ -72,6 +76,8 @@ jobs:
 
 #    - name: SSH connection to Actions
 #      uses: P3TERX/debugger-action@master
+    - name: SSH connection to Actions
+      uses: P3TERX/debugger-action@master
 
     - name: Download package
       run: |
