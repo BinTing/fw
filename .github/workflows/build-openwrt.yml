@@ -1,12 +1,14 @@
 #=================================================
-# https://github.com/P3TERX/Actions-OpenWrt
+# https://github.com/Live-ID/OpenWrt-Actions
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
-# Author: P3TERX
-# Blog: https://p3terx.com
+# Author: Tony
+# Blog: https://bit.do/TonyLee
 #=================================================
 
-name: Build OpenWrt
+#name: OpenWrt WR703N OpenVPN SSR
+#name: OpenWrt WR703N OpenVPN SSR
+name: OpenWrt WR703N OpenVPN SSR
 
 on: 
   release:
@@ -20,6 +22,8 @@ on:
 #    - cron: 0 8 * * 5
 #  watch:
 #    types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -72,6 +76,8 @@ jobs:
 
 #    - name: SSH connection to Actions
 #      uses: P3TERX/debugger-action@master
+    - name: SSH connection to Actions
+      uses: P3TERX/debugger-action@master
 
     - name: Download package
       run: |
