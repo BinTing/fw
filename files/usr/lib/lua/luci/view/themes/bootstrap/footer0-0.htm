@@ -1,0 +1,37 @@
+<div class="image" onclick ="window.open('https://bit.do/ssrgo'); >
+<!-- <script src="../luci-static/resources/pic.js"></script> 
+<script src="<%=resource%>/pic.js?v=git-19.299.52050-0b735ea"></script>
+</div>
+
+<%#
+ Copyright 2008 Steven Barth <steven@midlink.org>
+ Copyright 2008 Jo-Philipp Wich <jow@openwrt.org>
+ Copyright 2012 David Menting <david@nut-bolt.nl>
+ Copyright 2019 Tony <tony-cn@outlook.com>
+ Licensed to the public under the Apache License 2.0.
+-%>
+
+<%
+	local ver = require "luci.version"
+	local disp = require "luci.dispatcher"
+	local request  = disp.context.path
+	local category = request[1]
+	local tree = disp.node()
+	local categories = disp.node_childs(tree)
+%>
+   <footer>
+<a href="http://git.io/Tony" target="_blank">Powered by Tony</a>
+<a href="/cgi-bin/luci/admin/tony/GCP" > (Google Cloud)</a> <a href="http://bit.ly/TonyCN"><%= ver.distversion %></a>
+
+<% if #categories > 1 then %>
+     <ul class="breadcrumb pull-right" id="modemenu">
+	    <% for i, r in ipairs(categories) do %>
+		    <li<% if request[1] == r then %> class="active"<%end%>><a href="<%=controller%>/<%=r%>/"><%=striptags(translate(tree.nodes[r].title))%></a> <span class="divider">|</span></li>
+	    <% end %>
+     </ul>
+    <% end %>
+   </footer>
+   </div>
+  </div>
+ </body>
+</html>

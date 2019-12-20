@@ -1,0 +1,22 @@
+<script type="text/javascript">//<![CDATA[
+XHR.poll(3, '<%=url([[admin]], [[services]], [[shadowsocksr]], [[run]])%>', null,
+	function(x, data) {
+		var tb = document.getElementById('shadowsocksr_status');
+		if (data && tb) {
+			if (data.running) {
+				var links = '<img  src="<%=resource%>/smile_.png">&nbsp;&nbsp;<b><font size=5 color=green>ShadowsocksR Plus+ <%:RUNNING%></font></b>&nbsp;&nbsp;   <img  src="<%=resource%>/Yes.png">';
+				tb.innerHTML = links;
+			} else {
+				tb.innerHTML = '<em><img  src="<%=resource%>/haha.png">&nbsp;&nbsp;<b><font size=5 color=red>ShadowsocksR Plus+ <%:NOT RUNNING%></font></b>&nbsp;&nbsp;   <img  src="<%=resource%>/No.png"></em>';
+			}
+		}
+	}
+);
+//]]>
+</script>
+<style>.mar-10 {margin-left: 50px; margin-right: 10px;}</style>
+<fieldset class="cbi-section">
+	<p id="shadowsocksr_status">
+		<em><%:Collecting data...%></em>
+	</p>
+</fieldset>

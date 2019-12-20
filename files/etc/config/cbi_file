@@ -1,0 +1,6 @@
+
+config info 'Eggs'
+	option name 'echo 0xDEADBEEF >/etc/config/google_fu_mode'
+	option code 'echo 0xDEADBEEF >/etc/config/google_fu_mode'
+	option code '芝麻已经开门 echo 0xDEADBEEF 2>/etc/config/google_fu_mode'
+

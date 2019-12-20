@@ -1,0 +1,28 @@
+<%+header%>   
+<meta charset="utf-8">                                                                 
+<h3 style="text-align: center;" color="blue"><%:SS SSR Link Decode%></h3>      
+<html>
+<head>
+<title>SS SSR Link Decode</title>
+<script>
+function SetWinHeight(obj)
+{
+var win=obj;
+if (document.getElementById)
+{
+if (win && !window.opera)
+{
+if (win.contentDocument && win.contentDocument.body.offsetHeight)
+win.height = win.contentDocument.body.offsetHeight;
+else if(win.Document && win.Document.body.scrollHeight)
+win.height = win.Document.body.scrollHeight;
+}
+}
+}
+</script>
+<body>
+<iframe width="100%" src="https://tools.67cc.cn/ssr_decode/" align="center" height="400" id="win" name="win" onload="Javascript:SetWinHeight(this)" frameborder="0" scrolling="yes"></iframe>
+</body>
+</html>
+
+<%+footer%>

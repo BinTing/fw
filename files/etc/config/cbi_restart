@@ -1,0 +1,4 @@
+config info '重启有线网络和无线WiFi'
+	option name '正在重启有线网络和无线WiFi'
+	option code '正在重启有线网络和无线WiFi'
+

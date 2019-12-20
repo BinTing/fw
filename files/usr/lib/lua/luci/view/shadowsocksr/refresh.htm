@@ -1,0 +1,44 @@
+<%+cbi/valueheader%>
+
+<script type="text/javascript">//<![CDATA[
+
+	function refresh_data(btn,dataname)
+	{
+		btn.disabled = true;
+		btn.value    = '<%:Refresh...%> ';
+		murl=dataname;
+		XHR.get('<%=luci.dispatcher.build_url("admin", "services", "shadowsocksr","refresh")%>',
+			{ set:murl },
+			function(x,rv)
+			{
+			var s = document.getElementById(dataname+'-status');
+			if (s)
+			{
+				if (rv.ret=="0")
+				s.innerHTML ="<img  src='<%=resource%>/Yes.png'>&nbsp;&nbsp;&nbsp;  <font size=5   color='green'>"+"<%:No new data!%> "+"</font>&nbsp;<img  src='<%=resource%>/smile_.png'>";
+				else if(rv.ret=="-1")
+				{
+					s.innerHTML ="<img  src='<%=resource%>/No.png'>&nbsp;&nbsp;&nbsp;  <font size=5   color='red'>"+"<%:Refresh Error!%> "+"</font>&nbsp;<img  src='<%=resource%>/haha.png'>";
+				}	
+				else
+					{
+				s.innerHTML ="<img  src='<%=resource%>/Yes.png'>&nbsp;&nbsp;&nbsp;  <font  size=5  color='green'>"+"<%:Refresh OK!%> "+"<%:Total Records:%>"+rv.ret+"</font>&nbsp;<img  src='<%=resource%>/smile_.png'>";
+			}
+
+
+			}
+
+				btn.disabled = false;
+				btn.value    = '<%:Refresh Data %>';
+			}
+		);
+
+		return false;
+	}
+//]]></script>
+
+
+<input type="button" class="cbi-button cbi-input-reload" value="<%:Refresh Data%> " onclick="return refresh_data(this,'<%=self.option%>')" />
+<span id="<%=self.option%>-status"><em><%=self.value%></em></span>
+
+<%+cbi/valuefooter%>
