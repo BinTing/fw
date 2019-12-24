@@ -234,7 +234,7 @@ generate_static_system() {
 	uci -q batch <<-EOF
 		delete system.@system[0]
 		add system system
-		set system.@system[-1].hostname='MiniRouter'
+#		set system.@system[-1].hostname='MiniRouter'
 #		set system.@system[-1].hostname='X86X64'
 #		set system.@system[-1].hostname='BTFLY'
 #		set system.@system[-1].hostname='MiniRouter'
@@ -252,6 +252,7 @@ generate_static_system() {
 #		set system.@system[-1].hostname='K2'
 #		set system.@system[-1].hostname='RaspberryPi4'
 #		set system.@system[-1].hostname='K2'
+		set system.@system[-1].hostname='WR720N'
 		set system.@system[-1].timezone='CST-8'
 		set system.@system[-1].zonename='Asia/Shanghai'
 		set system.@system[-1].ttylogin='0'
