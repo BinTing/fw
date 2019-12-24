@@ -118,7 +118,8 @@ detect_mac80211() {
 			set wireless.default_radio${devidx}.device=radio${devidx}
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
-			set wireless.default_radio${devidx}.ssid=WR703N-WiFi
+			set wireless.default_radio${devidx}.ssid=WR720N-WiFi
+#			set wireless.default_radio${devidx}.ssid=WR703N-WiFi
 #			set wireless.default_radio${devidx}.ssid=WR800N-WiFi
 #			set wireless.default_radio${devidx}.ssid=WR800-WiFi
 #			set wireless.default_radio${devidx}.ssid=K2P-WiFi
