@@ -9,7 +9,8 @@
 #name: OpenWrt WR703N OpenVPN SSR
 #name: OpenWrt WR703N OpenVPN SSR
 #name: OpenWrt WR703N OpenVPN SSR
-name: OpenWrt WR720N OpenVPN SSR
+#name: OpenWrt WR720N OpenVPN SSR
+name: OpenWrt WR720N SSR trojan
 
 on: 
   release:
