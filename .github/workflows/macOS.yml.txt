@@ -1,0 +1,22 @@
+name: macOS
+
+on:
+  watch:
+    types: [started]
+
+jobs:
+  macOS:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Script
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/P3TERX/dotfiles/master/.bashrc >> ~/.bashrc
+        sudo systemsetup -settimezone "Asia/Shanghai"
+        touch /tmp/keepalive
+
+    - name: SSH connection to Actions
+      uses: P3TERX/debugger-action@master
