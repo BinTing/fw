@@ -71,7 +71,8 @@ jobs:
     - name: Load custom configuration 
       env:
        # CONFIG_FILE: '.config'
-        CONFIG_FILE: 'OpenWRT-N1.config'  
+       # CONFIG_FILE: 'OpenWRT-N1.config'  
+        CONFIG_FILE: '.config'  
         DIY_SH: 'diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
