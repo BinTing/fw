@@ -11,7 +11,8 @@
 #name: OpenWrt WR703N OpenVPN SSR
 #name: OpenWrt WR720N OpenVPN SSR
 #name: OpenWrt WR720N SSR troja
-name: OpenWRT for N1
+#name: OpenWRT for N1
+name: OpenWRT for WR941Nv4
 
 on: 
   release:
