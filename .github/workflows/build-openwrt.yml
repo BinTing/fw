@@ -74,7 +74,8 @@ jobs:
       env:
        # CONFIG_FILE: '.config'
        # CONFIG_FILE: 'OpenWRT-N1.config'  
-        CONFIG_FILE: '.config'  
+       # CONFIG_FILE: '.config'  
+        CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
         DIY_SH: 'diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
@@ -125,5 +126,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: OpenWrt_firmware
+        name: WR941N_firmware
         path: ${{ env.FIRMWARE }}
