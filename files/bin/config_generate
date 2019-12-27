@@ -252,7 +252,9 @@ generate_static_system() {
 #		set system.@system[-1].hostname='K2'
 #		set system.@system[-1].hostname='RaspberryPi4'
 #		set system.@system[-1].hostname='K2'
-		set system.@system[-1].hostname='WR720N'
+#		set system.@system[-1].hostname='WR720N'
+		set system.@system[-1].hostname='WR941N'
+		
 		set system.@system[-1].timezone='CST-8'
 		set system.@system[-1].zonename='Asia/Shanghai'
 		set system.@system[-1].ttylogin='0'
