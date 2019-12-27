@@ -70,6 +70,28 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
+    - name: Custom 个性化设置一些文件
+      run: |
+          cd openwrt
+          #
+          ## sed -i 's/被替换的内容/要替换成的内容/' package/lean/default-settings/files/zzz-default-setting
+          sed -i 's/R9.12.03/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
+          sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
+          ##sed -i 's/WDR7400/WDR7600/' package\/base-files\/files\/bin\/config_generate
+          sed -i 's/OpenWrt/NanoPi/' package\/base-files\/files\/bin\/config_generate
+          sed -i 's/.ssid=OpenWrt/.ssid=NanoPi-WiFi/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
+          sed -i 's/.encryption=none/.encryption=psk2\n	    		set wireless.default_radio\${devidx}.key=password\n/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
+      
+    - name: Custom Applications 增加应用软件
+      run: |
+          cd friendlywrt-h5/friendlywrt/package
+          git clone https://github.com/Baozisoftware/luci-app-koolproxy
+          git clone https://github.com/vernesong/OpenClash.git
+          git clone https://github.com/destan19/OpenAppFilter.git
+          git clone https://github.com/tty228/luci-app-serverchan.git
+          git clone https://github.com/BoringCat/luci-app-mentohust.git
+          git clone https://github.com/ilya-fedin/pihole-openwrt.git
+          
     - name: Load custom configuration 
       env:
        # CONFIG_FILE: '.config'
@@ -113,11 +135,13 @@ jobs:
       if: always()
       with:
         name: OpenWrt_bin
-        path: openwrt/bin
+        path: openwrt/bin openwrt/.config
+        
 
     - name: Organize files
       if: always()
       run: |
+        cp openwrt/.config ./artifact/
         cd openwrt/bin/targets/*/*
         rm -rf packages
         echo "::set-env name=FIRMWARE::$(pwd)"
@@ -128,3 +152,4 @@ jobs:
       with:
         name: WR941N_firmware
         path: ${{ env.FIRMWARE }}
+          
