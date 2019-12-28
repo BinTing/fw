@@ -78,8 +78,8 @@ jobs:
           sed -i 's/R9.12.03/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
           sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
           ##sed -i 's/WDR7400/WDR7600/' package\/base-files\/files\/bin\/config_generate
-          sed -i 's/OpenWrt/NanoPi/' package\/base-files\/files\/bin\/config_generate
-          sed -i 's/.ssid=OpenWrt/.ssid=NanoPi-WiFi/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
+          sed -i 's/OpenWrt/WR941N/' package\/base-files\/files\/bin\/config_generate
+          sed -i 's/.ssid=OpenWrt/.ssid=WR941N-WiFi/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
           sed -i 's/.encryption=none/.encryption=psk2\n	    		set wireless.default_radio\${devidx}.key=password\n/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
       
     - name: Custom Applications 增加应用软件
