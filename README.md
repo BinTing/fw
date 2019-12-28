@@ -6,6 +6,10 @@
 
 Build OpenWrt using GitHub Actions
 
+git  add --all
+git commit -m 'add more files'
+git push origin master
+
 [Read the details in my blog (in Chinese) | 中文教程](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
 [GitHub Actions Group](https://t.me/GitHub_Actions) | [GitHub Actions Channel](https://t.me/GitHub_Actions_Channel)
