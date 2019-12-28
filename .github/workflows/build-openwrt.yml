@@ -37,7 +37,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
-    - name: Initialization environment
+    - name: Initialization environment 初始化编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -54,7 +54,7 @@ jobs:
         curl -fsSL https://raw.githubusercontent.com/P3TERX/dotfiles/master/.bashrc >> ~/.bashrc
         sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-    - name: Clone source code
+    - name: Clone source code 复制仓库的源代码
       env: 
        ## REPO_URL: https://github.com/coolsnowwolf/lede
        ## REPO_URL: https://github.com/openwrt/openwrt
@@ -64,10 +64,10 @@ jobs:
          REPO_BRANCH: master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
-    - name: Update feeds
+    - name: Update feeds 更新源
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
+    - name: Install feeds 安装源
       run: cd openwrt && ./scripts/feeds install -a
 
     - name: Custom 个性化设置一些文件
@@ -92,7 +92,7 @@ jobs:
           git clone https://github.com/BoringCat/luci-app-mentohust.git
           git clone https://github.com/ilya-fedin/pihole-openwrt.git
           
-    - name: Load custom configuration 
+    - name: Load custom configuration 加载自定义编译配置文件
       env:
        # CONFIG_FILE: '.config'
        # CONFIG_FILE: 'OpenWRT-N1.config'  
@@ -109,44 +109,54 @@ jobs:
 
 #    - name: SSH connection to Actions
 #      uses: P3TERX/debugger-action@master
-    - name: SSH connection to Actions
+    - name: SSH connection to Actions 用SSH连接到终端控制台
       uses: P3TERX/debugger-action@master
 
-    - name: Download package
+    - name: Download package 下载软件包
       run: |
         cd openwrt && make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Multi-thread compile
+    - name: Multi-thread compile 多线程编译
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc)
 
-    - name: Single-thread compile
+    - name: Single-thread compile 单线程编译
       if: failure()
       run: |
         cd openwrt
         make -j1 V=s
 
-    - name: Upload bin directory
+    - name: Upload bin directory 上传固件相关软件包
       uses: actions/upload-artifact@master
       if: always()
       with:
         name: OpenWrt_bin
-        path: openwrt/bin openwrt/.config
-        
+        path: openwrt/bin
 
-    - name: Organize files
-      if: always()
+    - name: Upload .config file 组织要上传.config配置文件
       run: |
-        cp openwrt/.config ./artifact/
+           mkdir -p openwrt/artifact
+           cp openwrt/.config openwrt/artifact/
+           
+    - name: Upload .config file 上传编译配置文件
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: OpenWrt.config
+        path: openwrt/artifact
+
+    - name: Organize files 组织要上传的文件
+      if: always()
+      run: |  
         cd openwrt/bin/targets/*/*
         rm -rf packages
         echo "::set-env name=FIRMWARE::$(pwd)"
-
-    - name: Upload firmware
+    
+    - name: Upload firmware 上传固件文件
       uses: actions/upload-artifact@master
       if: always()
       with:
