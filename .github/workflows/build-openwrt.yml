@@ -61,7 +61,7 @@ jobs:
        ## REPO_URL: https://github.com/openwrt/openwrt
        ## REPO_URL: https://github.com/openwrt/openwrt
        ## REPO_URL: https://github.com/a520ass/openwrt
-         REPO_URL: https://github.com/a520ass/openwrt
+         REPO_URL: https://github.com/coolsnowwolf/lede
          REPO_BRANCH: master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
@@ -97,9 +97,9 @@ jobs:
       env:
        # CONFIG_FILE: '.config'
        # CONFIG_FILE: 'OpenWRT-N1.config'  
-       # CONFIG_FILE: '.config'  
+        CONFIG_FILE: '.config'  
        # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
-        CONFIG_FILE: 'OpenWRT_WR720N_v4_16M_mtd.config' 
+       # CONFIG_FILE: 'OpenWRT_WR720N_v4_16M_mtd.config' 
         DIY_SH: 'diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
