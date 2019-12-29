@@ -12,7 +12,8 @@
 #name: OpenWrt WR720N OpenVPN SSR
 #name: OpenWrt WR720N SSR troja
 #name: OpenWRT for N1
-name: OpenWRT for WR941N_v4
+#name: OpenWRT for WR941N_v4
+name: OpenWRT for WR720N_v4_16M
 
 on: 
   release:
@@ -97,11 +98,13 @@ jobs:
        # CONFIG_FILE: '.config'
        # CONFIG_FILE: 'OpenWRT-N1.config'  
        # CONFIG_FILE: '.config'  
-        CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
+       # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
+        CONFIG_FILE: 'OpenWRT_WR720N_v4_16M_mtd.config' 
         DIY_SH: 'diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
-        cp -f uboot/wr941v1v2v3v4v5-uboot.bin openwrt/files/etc/uboot.bin
+        
+        cp -f uboot/breed-for-wr710n_wr720n openwrt/files/etc/uboot.bin
         cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/{system.lua,tony.lua} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/
         cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/{flashops.htm,reboot.htm} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/
         cp -f -r lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_tony_view/  openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_tony_view/
@@ -120,6 +123,7 @@ jobs:
       ##cp -f lucifiles/package/lean/luci-theme-argon/htdocs/luci-static/argon/{tony.gif,logo.png,favicon.ico}  openwrt/package/lean/luci-theme-argon/htdocs/luci-static/argon/
   
       #  cp -f uboot/wr703n-uboot.bin openwrt/files/etc/uboot.bin
+      #  cp -f uboot/wr941v1v2v3v4v5-uboot.bin openwrt/files/etc/uboot.bin
       #  cp -f uboot/wr941v1v2v3v4v5-uboot.bin openwrt/files/etc/uboot.bin
       #  cp -f uboot/wr941v1v2v3v4v5-uboot.bin openwrt/files/etc/uboot.bin
 
