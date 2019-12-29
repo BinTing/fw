@@ -104,7 +104,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         
-        cp -f uboot/breed-for-wr710n_wr720n openwrt/files/etc/uboot.bin
+        cp -f uboot/breed-for-wr710n_wr720n.bin openwrt/files/etc/uboot.bin
         cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/{system.lua,tony.lua} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/
         cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/{flashops.htm,reboot.htm} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/
         cp -f -r lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_tony_view/  openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_tony_view/
@@ -129,8 +129,8 @@ jobs:
 
       # - name: SSH connection to Actions
       #   uses: P3TERX/debugger-action@master
-   # - name: SSH connection to Actions 用SSH连接到终端控制台
-   #   uses: Tony268/debugger-action@master
+    - name: SSH connection to Actions 用SSH连接到终端控制台
+      uses: Tony268/debugger-action@master
 
     - name: Download package 下载软件包
       run: |
