@@ -12,7 +12,7 @@
 #name: OpenWrt WR720N OpenVPN SSR
 #name: OpenWrt WR720N SSR troja
 #name: OpenWRT for N1
-name: OpenWRT for WR941Nv4
+name: OpenWRT for WR941N_v4
 
 on: 
   release:
@@ -102,11 +102,23 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         cp -f uboot/wr941v1v2v3v4v5-uboot.bin openwrt/files/etc/uboot.bin
+        cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/{system.lua,tony.lua} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/{system.lua,tony.lua}
+        cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/{flashops.htm,reboot.htm} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/{flashops.htm,reboot.htm}
+        cp -f -r lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_tony_view/  openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_tony_view/
+        cp -f -r lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/model/cbi/admin_tony/  openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/model/cbi/admin_tony/
+        cp -f lucifiles/feeds/luci/themes/luci-theme-bootstrap/luasrc/view/themes/bootstrap/{footer.htm,header.htm}  openwrt/feeds/luci/themes/luci-theme-bootstrap/luasrc/view/themes/bootstrap/{footer.htm,header.htm}
+        cp -f lucifiles/package/lean/luci-app-ssr-plus/luasrc/view/shadowsocksr/{ssrurl.htm,status.htm,refresh.htm,check.htm}  openwrt/package/lean/luci-app-ssr-plus/luasrc/view/shadowsocksr/{ssrurl.htm,status.htm,refresh.htm,check.htm}
+        cp -f lucifiles/target/linux/ar71xx/files/drivers/mtd/tplinkpart.c  openwrt/target/linux/ar71xx/files/drivers/mtd/tplinkpart.c
+        cp -f lucifiles/feeds/luci/modules/luci-base/luasrc/model/firewall.lua  openwrt/
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SH
         cd openwrt
         ../$DIY_SH
         make defconfig
+        
+      ##cp -f lucifiles/target/linux/ar71xx/image/{tiny-tp-link.mk,generic-tp-link.mk}  openwrt/target/linux/ar71xx/image/{tiny-tp-link.mk,generic-tp-link.mk}
+      ##cp -f lucifiles/package/lean/luci-theme-argon/htdocs/luci-static/argon/{tony.gif,logo.png,favicon.ico}  openwrt/package/lean/luci-theme-argon/htdocs/luci-static/argon/{tony.gif,logo.png,favicon.ico}
+  
       #  cp -f uboot/wr703n-uboot.bin openwrt/files/etc/uboot.bin
       #  cp -f uboot/wr941v1v2v3v4v5-uboot.bin openwrt/files/etc/uboot.bin
       #  cp -f uboot/wr941v1v2v3v4v5-uboot.bin openwrt/files/etc/uboot.bin
