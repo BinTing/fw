@@ -109,7 +109,7 @@ jobs:
         cp -f lucifiles/feeds/luci/themes/luci-theme-bootstrap/luasrc/view/themes/bootstrap/{footer.htm,header.htm}  openwrt/feeds/luci/themes/luci-theme-bootstrap/luasrc/view/themes/bootstrap/{footer.htm,header.htm}
         cp -f lucifiles/package/lean/luci-app-ssr-plus/luasrc/view/shadowsocksr/{ssrurl.htm,status.htm,refresh.htm,check.htm}  openwrt/package/lean/luci-app-ssr-plus/luasrc/view/shadowsocksr/{ssrurl.htm,status.htm,refresh.htm,check.htm}
         cp -f lucifiles/target/linux/ar71xx/files/drivers/mtd/tplinkpart.c  openwrt/target/linux/ar71xx/files/drivers/mtd/tplinkpart.c
-        cp -f lucifiles/feeds/luci/modules/luci-base/luasrc/model/firewall.lua  openwrt/
+        cp -f lucifiles/feeds/luci/modules/luci-base/luasrc/model/firewall.lua  openwrt/feeds/luci/modules/luci-base/luasrc/model/firewall.lua
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SH
         cd openwrt
