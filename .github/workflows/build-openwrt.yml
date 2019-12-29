@@ -91,7 +91,7 @@ jobs:
           git clone https://github.com/destan19/OpenAppFilter.git
           git clone https://github.com/tty228/luci-app-serverchan.git
           git clone https://github.com/BoringCat/luci-app-mentohust.git
-          git clone https://github.com/ilya-fedin/pihole-openwrt.git
+          #git clone https://github.com/ilya-fedin/pihole-openwrt.git
           
     - name: Load custom configuration 加载自定义编译配置文件
       env:
