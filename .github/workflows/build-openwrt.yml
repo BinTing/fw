@@ -80,8 +80,8 @@ jobs:
           sed -i 's/R9.12.03/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
           sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
           ##sed -i 's/WDR7400/WDR7600' package\/base-files\/files\/bin\/config_generate
-          sed -i 's/OpenWrt/WR941N/' package\/base-files\/files\/bin\/config_generate
-          sed -i 's/.ssid=OpenWrt/.ssid=WR941N-WiFi/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
+          sed -i 's/OpenWrt/WR720N/' package\/base-files\/files\/bin\/config_generate
+          sed -i 's/.ssid=OpenWrt/.ssid=WR720N-WiFi/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
           sed -i 's/.encryption=none/.encryption=psk2\n	    		set wireless.default_radio\${devidx}.key=password\n/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
       
     - name: Custom Applications 增加应用软件
@@ -99,8 +99,8 @@ jobs:
        # CONFIG_FILE: '.config'
        # CONFIG_FILE: 'OpenWRT-N1.config'  
        # CONFIG_FILE: '.config'  
-        CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
-       # CONFIG_FILE: 'OpenWRT_WR720N_v4_16M_mtd.config' 
+       # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
+        CONFIG_FILE: 'OpenWRT_WR720N_v4_16M_mtd.config' 
         DIY_SH: 'diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
@@ -155,7 +155,7 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: OpenWrt_packages
+        name: OpenWrt_packages720
         path: openwrt/bin
 
     - name: Upload .config file 组织要上传.config配置文件
@@ -167,7 +167,7 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: OpenWrt.config
+        name: OpenWrt720config
         path: openwrt/artifact
 
     - name: Organize files 组织要上传的文件
@@ -181,6 +181,6 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: WR941N_firmware
+        name: WR720N_firmware
         path: ${{ env.FIRMWARE }}
           
