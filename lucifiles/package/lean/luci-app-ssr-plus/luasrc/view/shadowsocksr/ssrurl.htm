@@ -88,7 +88,7 @@
         var s = document.getElementById(urlname + '-status');
         if (!s)
             return false;
-        var ssrurl = prompt("把SS、SSR、V2Ray链接粘贴到下面输入框 ss://、ssr://、vmess://、trojan://", "一键导入SS、SSR、V2Ray科学上网节点链接");
+        var ssrurl = prompt("把SS、SSR、V2Ray、Trojan链接粘贴到下面输入框 ss://、ssr://、vmess://、trojan://", "一键导入SS、SSR、V2Ray、Trojan科学上网节点链接");
         if (ssrurl == null || ssrurl == "") {
             s.innerHTML = "<font color='red'>操作取消</font>";
             return false;
@@ -97,7 +97,7 @@
         //var ssu = ssrurl.match(/ssr:\/\/([A-Za-z0-9_-]+)/i);
         var ssu = ssrurl.split('://');
         console.log(ssu.length);
-        if ((ssu[0] != "ssr" && ssu[0] != "ss" && ssu[0] != "vmess") || ssu[1] == "") {
+        if ((ssu[0] != "ssr" && ssu[0] != "ss" && ssu[0] != "vmess" && ssu[0] != "trojan") || ssu[1] == "") {
             s.innerHTML = "<br></br><img  src='<%=resource%>/ei.png'>&nbsp;&nbsp;&nbsp;<font size=5 color='red'>链接格式无效，请检查链接</font>";
             return false;
         }
@@ -140,7 +140,7 @@
             if (typeof (rem) != 'undefined' && rem != '' && rem.length > 0)
                 document.getElementById('cbid.shadowsocksr.' + sid + '.alias').value = b64decutf8safe(rem);
 
-            s.innerHTML = "<br></br><img  src='<%=resource%>/smile.png'>&nbsp;&nbsp;<font  size=5 color='green'><b>成功导入ShadowsocksR配置信息</b></font>";
+            s.innerHTML = "<br></br><img  src='<%=resource%>/smile.png' width='72'>&nbsp;&nbsp;<font size=6 color='green'><b>成功导入ShadowsocksR配置信息</b></font>&nbsp;&nbsp;   <img  src='<%=resource%>/Yes.png' width='72'>";
             return false;
         } else if (ssu[0] == "ss") {
             var ploc = ssu[1].indexOf("#");
@@ -168,7 +168,7 @@
                 document.getElementById('cbid.shadowsocksr.' + sid + '.alias').value = decodeURI(param);
             }
 
-            s.innerHTML = "<font color='green'>导入Shadowsocks配置信息成功</font>";
+	s.innerHTML = "<br></br><img  src='<%=resource%>/smile.png' width='72'>&nbsp;&nbsp;<font size=6 color='green'><b>成功导入Shadowsocks配置信息</b></font>&nbsp;&nbsp;   <img  src='<%=resource%>/Yes.png' width='72'>";
             return false;
         } else if (ssu[0] == "trojan") {
             var ploc = ssu[1].indexOf("#");
@@ -191,7 +191,7 @@
             if (param != undefined) {
                 document.getElementById('cbid.shadowsocksr.' + sid + '.alias').value = decodeURI(param);
             }
-            s.innerHTML = "<font color='green'>导入Trojan配置信息成功</font>";
+            s.innerHTML = "<br></br><img  src='<%=resource%>/smile.png' width='72'>&nbsp;&nbsp;<font size=6 color='green'><b>成功导入Trojan配置信息</b></font>&nbsp;&nbsp;   <img  src='<%=resource%>/Yes.png' width='72'>";
             return false;
         } else if (ssu[0] == "vmess") {
             var sstr = b64DecodeUnicode(ssu[1]);
@@ -214,7 +214,7 @@
             document.getElementById('cbid.shadowsocksr.' + sid + '.http_host').value = ssm.host;
             document.getElementById('cbid.shadowsocksr.' + sid + '.http_path').value = ssm.path;
 
-	    s.innerHTML = "<br></br><img  src='<%=resource%>/smile.png'>&nbsp;&nbsp;<font size=5  color='green'><b>成功导入V2Ray配置信息</b></font>";
+	    s.innerHTML = "<br></br><img  src='<%=resource%>/smile.png' width='72'>&nbsp;&nbsp;<font size=6 color='green'><b>成功导入V2Ray配置信息</b></font>&nbsp;&nbsp;   <img  src='<%=resource%>/Yes.png' width='72'>";
             return false;
         }
 
@@ -222,7 +222,7 @@
 //]]></script>
 
 <a href="http://bit.ly/TonyCN"><img  src="<%=resource%>/plane.png"></a>
-<input type="button" class="cbi-button cbi-button-apply" value="【一键导入SS、SSR、V2Ray科学上网节点链接】" onclick="return import_ssr_url(this, '<%=self.option%>', '<%=self.value%>')" />
+<input type="button" class="cbi-button cbi-button-apply" value="【一键导入SS、SSR、V2Ray、Trojan科学上网节点链接】" onclick="return import_ssr_url(this, '<%=self.option%>', '<%=self.value%>')" />
 <a href="http://bit.ly/TonyCN"><img  src="<%=resource%>/rocket.png"></a>
 <span id="<%=self.option%>-status"></span>
 
