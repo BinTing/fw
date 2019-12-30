@@ -155,7 +155,7 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: OpenWrt_bin
+        name: OpenWrt_packages
         path: openwrt/bin
 
     - name: Upload .config file 组织要上传.config配置文件
