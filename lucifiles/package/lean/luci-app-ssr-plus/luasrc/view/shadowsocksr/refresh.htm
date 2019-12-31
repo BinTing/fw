@@ -15,14 +15,14 @@
 			if (s)
 			{
 				if (rv.ret=="0")
-				s.innerHTML ="<img  src='<%=resource%>/Yes.png' width=32 hight=32>&nbsp;&nbsp;&nbsp;  <font size=5   color='green'>"+"<%:No new data!%> "+"</font>&nbsp;<img  src='<%=resource%>/smile_.png' width=32 hight=32>";
+				s.innerHTML ="<img  src='<%=resource%>/Yes.png' width=32 hight=32>&nbsp;  <font size=5   color='green'>"+"<%:No new data!%> "+"</font><img  src='<%=resource%>/smile_.png' width=32 hight=32>";
 				else if(rv.ret=="-1")
 				{
-					s.innerHTML ="<img  src='<%=resource%>/No.png' width=32 hight=32>&nbsp;&nbsp;&nbsp;  <font size=5   color='red'>"+"<%:Refresh Error!%> "+"</font>&nbsp;<img  src='<%=resource%>/haha.png' width=32 hight=32>";
+					s.innerHTML ="<img  src='<%=resource%>/No.png' width=32 hight=32>&nbsp;  <font size=5   color='red'>"+"<%:Refresh Error!%> "+"</font><img  src='<%=resource%>/haha.png' width=32 hight=32>";
 				}	
 				else
 					{
-				s.innerHTML ="<img  src='<%=resource%>/Yes.png' width=32 hight=32>&nbsp;&nbsp;&nbsp;  <font  size=5  color='green'>"+"<%:Refresh OK!%> "+"<%:Total Records:%>"+rv.ret+"</font>&nbsp;<img  src='<%=resource%>/smile_.png' width=32 hight=32>";
+				s.innerHTML ="<img  src='<%=resource%>/Yes.png' width=32 hight=32>&nbsp;  <font  size=5  color='green'>"+"<%:Refresh OK!%> "+"<%:Total Records:%>"+rv.ret+"</font><img  src='<%=resource%>/smile_.png' width=32 hight=32>";
 			}
 
 
