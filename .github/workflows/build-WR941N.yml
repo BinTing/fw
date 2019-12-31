@@ -12,8 +12,9 @@
 #name: OpenWrt WR720N OpenVPN SSR
 #name: OpenWrt WR720N SSR troja
 #name: OpenWRT for N1
-name: OpenWRT for WR941N_v4
 #name: OpenWRT for WR720N_v3_16M
+name: OpenWRT for WR941N_v4
+
 
 on: 
   release:
@@ -163,7 +164,7 @@ jobs:
     - name: Upload .config file 组织要上传.config配置文件
       run: |
            mkdir -p openwrt/artifact
-           cp openwrt/.config openwrt/artifact/
+           cp openwrt/.config openwrt/artifact/OpenWRT_WR941N_v4_1.config
            
     - name: Upload .config file 上传编译配置文件
       uses: actions/upload-artifact@master
