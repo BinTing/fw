@@ -23,7 +23,7 @@ on:
     branches: 
       - master
     paths:
-      - '.config'
+      - 'configs/.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:
@@ -101,8 +101,8 @@ jobs:
        # CONFIG_FILE: 'OpenWRT-N1.config'  
        # CONFIG_FILE: '.config'  
        # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
-        CONFIG_FILE: 'OpenWRT_WR802N_v1_16M.config' 
-        DIY_SH: 'diy.sh'
+        CONFIG_FILE: 'configs/OpenWRT_WR802N_v1_16M.config' 
+        DIY_SH: 'configs/diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
         
