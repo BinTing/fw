@@ -13,7 +13,7 @@
 #name: OpenWrt WR720N SSR troja
 #name: OpenWRT for N1
 #name: OpenWRT for WR941N_v4
-name: OpenWRT for WR720N_v3_16M
+name: OpenWRT for WR720N_v4_16M
 
 on: 
   release:
@@ -101,7 +101,7 @@ jobs:
        # CONFIG_FILE: '.config'  
        # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
        # CONFIG_FILE: 'configs/OpenWRT_WR720N_v4_16M.config' 
-        CONFIG_FILE: 'configs/OpenWRT_WR720N_v4_16MSSR.config'   
+        CONFIG_FILE: 'configs/OpenWRT_WR720N_v4_16M.config'   
         DIY_SH: 'configs/diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
