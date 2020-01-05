@@ -101,7 +101,7 @@ jobs:
        # CONFIG_FILE: '.config'  
        # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
        # CONFIG_FILE: 'configs/OpenWRT_WR720N_v4_16M.config' 
-        CONFIG_FILE: 'configs/OpenWRT_WR720N_v4_16M.config'   
+        CONFIG_FILE: 'configs/OpenWRT_WR720N_v4_16M_SSRserver.config'   
         DIY_SH: 'configs/diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
