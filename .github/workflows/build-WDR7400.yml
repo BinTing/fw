@@ -79,7 +79,11 @@ jobs:
           #sed -i '/tl-wr720n-v3/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk        
           #sed -i '/tl-wr7400n-v2/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk
           #sed -i '/TL-WDR6500 v2/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk
-          sed -i 's/TL-WDR6500 v2/TL-WDR7400 v2/' target\/linux\/ar71xx\/image\/generic-tp-link.mk
+          #sed -i 's/TL-WDR6500 v2/TL-WDR7400 v2/' target\/linux\/ar71xx\/image\/generic-tp-link.mk
+          #sed -i 's/unameinfo.release/"Amlogic-N1-2020"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
+          #sed -i 's/pcdata(ver.luciversion)/"2020-01-06"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
+          #sed -i 's/unameinfo.release/"Amlogic-N1-2020"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
+          sed -i 's/pcdata(boardinfo.model/"TL-WDR7400 v2"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
           sed -i 's/R9.12.03/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
           sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
           ##sed -i 's/WDR7400/WDR7600' package\/base-files\/files\/bin\/config_generate
