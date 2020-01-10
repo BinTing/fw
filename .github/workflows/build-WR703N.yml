@@ -111,7 +111,8 @@ jobs:
         DIY_SH: 'configs/diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
-        
+ 
+        chmod +x openwrt/files/bin/*
         cp -f uboot/wr703n-uboot.bin openwrt/files/etc/uboot.bin
         cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/{system.lua,tony.lua} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/
         cp -f lucifiles/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/{flashops.htm,reboot.htm} openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/
