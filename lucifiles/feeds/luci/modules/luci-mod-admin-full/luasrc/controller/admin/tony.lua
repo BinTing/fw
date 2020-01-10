@@ -25,6 +25,6 @@ function index()
 --  entry({"admin", "tony", "docker"}, cbi("docker"), _("★ Docker"), 10)  
 	entry({"admin","services","docker","status"},call("act_status")).leaf=true
     entry({"admin", "tony", "theme"}, cbi("admin_tony/cbi_tony_theme"), _("★ Theme"), 11)  
-
+    entry({"admin", "tony", "logo"}, cbi("admin_tony/cbi_tony_logo"), _("★ Hide Logo"), 12) 
 end
 
