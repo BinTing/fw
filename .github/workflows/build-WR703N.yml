@@ -14,7 +14,7 @@
 #name: OpenWRT for N1
 #name: OpenWRT for WR941N_v4
 #name: OpenWRT for WR720N_v3_16M
-name: OpenWRT for WR703N_16M
+name: OpenWRT for WR703N_16M_USB
 
 
 on: 
@@ -79,13 +79,17 @@ jobs:
 
           ## sed -i 's/被替换的内容/要替换成的内容/' package/lean/default-settings/files/zzz-default-setting
           sed -i '/tl-wr703n-v1/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk        
-          sed -i 's/R9.12.03/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
+          sed -i 's/R9.12.31/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
+          sed -i 's/pcdata(ver.luciname)/"SuperRouter"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
           sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
           ##sed -i 's/WDR7400/WDR7600' package\/base-files\/files\/bin\/config_generate
           sed -i 's/OpenWrt/WR703N/' package\/base-files\/files\/bin\/config_generate
           sed -i 's/.ssid=OpenWrt/.ssid=WR703N-WiFi/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
           sed -i 's/.encryption=none/.encryption=psk2\n	    		set wireless.default_radio\${devidx}.key=password\n/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
-      
+          sed -i 's/pcdata(ver.luciversion)/"2020-01-09"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
+
+
+
     - name: Custom Applications 增加应用软件
       run: |
           cd openwrt/package
@@ -102,7 +106,8 @@ jobs:
        # CONFIG_FILE: 'OpenWRT-N1.config'  
        # CONFIG_FILE: '.config'  
        # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
-        CONFIG_FILE: 'configs/OpenWRT_WR703N_v1_16M.config' 
+       # CONFIG_FILE: 'configs/OpenWRT_WR703N_v1_16M.config' 
+        CONFIG_FILE: 'configs/OpenWRT_WR703N_v1_16M_USB.config' 
         DIY_SH: 'configs/diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
@@ -163,7 +168,8 @@ jobs:
     - name: Upload .config file 组织要上传.config配置文件
       run: |
            mkdir -p openwrt/artifact
-           cp openwrt/.config openwrt/artifact/OpenWRT_WR703N_v1_16M.config
+           cp openwrt/.config openwrt/artifact/OpenWRT_WR703N_v1_16M_USB.config
+           # cp openwrt/.config openwrt/artifact/OpenWRT_WR703N_v1_16M.config
            
     - name: Upload .config file 上传编译配置文件
       uses: actions/upload-artifact@master
