@@ -28,8 +28,8 @@ on:
 #    - cron: 0 8 * * 5
 #  watch:
 #    types: [started]
-#  watch:
-#    types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -53,7 +53,7 @@ jobs:
         sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
-        curl -fsSL https://raw.githubusercontent.com/P3TERX/dotfiles/master/.bashrc >> ~/.bashrc
+        curl -fsSL https://raw.githubusercontent.com/ccsfedu/dotfiles/master/.bashrc >> ~/.bashrc
         sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
     - name: Clone source code 复制仓库的源代码
@@ -78,8 +78,10 @@ jobs:
 
           ## sed -i 's/被替换的内容/要替换成的内容/' package/lean/default-settings/files/zzz-default-setting
           sed -i '/tl-wr802n-v1/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk        
-          sed -i 's/R9.12.03/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
+          sed -i 's/R20.1.24/Plus by Tony 2020/'  package\/lean\/default-settings\/files\/zzz-default-settings
           sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
+          sed -i 's/pcdata(ver.luciname)/"科學上網路由器"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
+          sed -i 's/pcdata(ver.luciversion)/"2020-02-06"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
           ##sed -i 's/WDR7400/WDR7600' package\/base-files\/files\/bin\/config_generate
           sed -i 's/OpenWrt/WR802N/' package\/base-files\/files\/bin\/config_generate
           sed -i 's/.ssid=OpenWrt/.ssid=WR802N-WiFi/' package\/kernel\/mac80211\/files\/lib\/wifi\/mac80211.sh
