@@ -15,7 +15,7 @@
 #name: OpenWRT for WR941N_v4
 #name: OpenWRT for WR720N_v3_16M
 #name: OpenWRT for WR800N_v1_16M
-name: OpenWRT for WR2041N_v1_16M
+name: OpenWRT for WR2041N_v2_8M
 
 on: 
   release:
@@ -76,7 +76,7 @@ jobs:
       run: |
           cd openwrt
           ## sed -i 's/被替换的内容/要替换成的内容/' package/lean/default-settings/files/zzz-default-setting
-          sed -i '/tl-wr2041-v4/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk 
+          sed -i '/tl-wr2041-v2/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk 
           #sed -i 's/TL-WR2041N\/ND v8/TL-WR800N v1/'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk        
           sed -i 's/R20.1.24/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
           sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
@@ -100,12 +100,12 @@ jobs:
           
     - name: Load custom configuration 加载自定义编译配置文件
       env:
-        CONFIG_FILE: '.config'
+       # CONFIG_FILE: '.config'
        # CONFIG_FILE: 'OpenWRT-N1.config'  
        # CONFIG_FILE: '.config'  
        # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
        # CONFIG_FILE: 'configs/OpenWRT_WR800N_v1_8M_v8.config'
-       # CONFIG_FILE: 'configs/OpenWRT_WR2041N_16M_v4.config'
+        CONFIG_FILE: 'configs/OpenWRT_WR2041N_v2_8M.config'
         DIY_SH: 'configs/diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
@@ -157,19 +157,19 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: OpenWrt_packagesWR2041N
+        name: OpenWrt_WR2041N_packages
         path: openwrt/bin
 
     - name: Upload .config file 组织要上传.config配置文件
       run: |
            mkdir -p openwrt/artifact
-           cp openwrt/.config openwrt/artifact/OpenWRT_WR2041N_16M_v4.config
+           cp openwrt/.config openwrt/artifact/OpenWRT_WR2041N_v2_8M.config
            
     - name: Upload .config file 上传编译配置文件
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: OpenWrtWR2041Nconfig
+        name: WR2041N_v2_config
         path: openwrt/artifact
 
     - name: Organize files 组织要上传的文件
@@ -183,5 +183,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: WR2041N_firmware
+        name: WR2041N_v2_firmware
         path: ${{ env.FIRMWARE }}
