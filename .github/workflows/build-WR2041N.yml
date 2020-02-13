@@ -107,7 +107,8 @@ jobs:
        # CONFIG_FILE: '.config'  
        # CONFIG_FILE: 'OpenWRT_WR941N_v4_1.config' 
        # CONFIG_FILE: 'configs/OpenWRT_WR800N_v1_8M_v8.config'
-        CONFIG_FILE: 'configs/OpenWRT_WR2041N_v2_8M.config'
+       # CONFIG_FILE: 'configs/OpenWRT_WR2041N_v2_8M.config'
+        CONFIG_FILE: 'configs/OpenWRT_WR2041N_v2_16M.config'
         DIY_SH: 'configs/diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
@@ -159,19 +160,21 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: OpenWrt_WR2041N_packages
+        name: OpenWrt_WR2041N_packages16
         path: openwrt/bin
 
     - name: Upload .config file 组织要上传.config配置文件
       run: |
            mkdir -p openwrt/artifact
-           cp openwrt/.config openwrt/artifact/OpenWRT_WR2041N_v2_8M.config
-           
+           cp openwrt/.config openwrt/artifact/OpenWRT_WR2041N_v2_16M.config
+           #cp openwrt/.config openwrt/artifact/OpenWRT_WR2041N_v2_8M.config
+            
+            
     - name: Upload .config file 上传编译配置文件
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: WR2041N_v2_config
+        name: WR2041N_v2_16config
         path: openwrt/artifact
 
     - name: Organize files 组织要上传的文件
@@ -185,5 +188,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: WR2041N_v2_firmware
+        name: WR2041N_v2_firmware16
         path: ${{ env.FIRMWARE }}
