@@ -15,7 +15,9 @@
 #name: OpenWRT for WR941N_v4
 #name: OpenWRT for WR720N_v3_16M
 #name: OpenWRT for WR800N_v1_16M
-name: OpenWRT for WR2041N_v2_8M
+#name: OpenWRT for WR2041N_v2_8M
+name: OpenWRT for WR2041N_v2_16M
+
 
 on: 
   release:
@@ -76,9 +78,9 @@ jobs:
       run: |
           cd openwrt
           ## sed -i 's/被替换的内容/要替换成的内容/' package/lean/default-settings/files/zzz-default-setting
-          sed -i '/tl-wr2041-v2/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk 
-          #sed -i 's/TL-WR2041N\/ND v8/TL-WR800N v1/'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk        
-          sed -i 's/R20.1.24/by Tony 2019/' package\/lean\/default-settings\/files\/zzz-default-settings
+          sed -i '/tl-wr2041n-v2/{n;s/tplink-8mlzma/tplink-16mlzma/;}'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk 
+          sed -i 's/TP-LINK TL-WR2041N v2/TP-LINK TL-WR2041N v4/'  target\/linux\/ar71xx\/image\/tiny-tp-link.mk        
+          sed -i 's/R20.1.24/by Tony 2020/' package\/lean\/default-settings\/files\/zzz-default-settings
           sed -i 's/192.168.1.1/192.168.2.1/' package\/base-files\/files\/bin\/config_generate
           sed -i 's/pcdata(ver.luciname)/"科學上網路由器"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
           sed -i 's/pcdata(ver.luciversion)/"2020-02-12"/' feeds\/luci\/modules\/luci-mod-admin-full\/luasrc\/view\/admin_status\/index.htm
